@@ -27,6 +27,6 @@ const User = ({ username, fullName }) =>
 export default User;
 
 User.propTypes = {
-  username: PropTypes.string.isRequired,
-  fullName: PropTypes.string.isRequired,
+  username: PropTypes.string,
+  fullName: PropTypes.string,
 };
