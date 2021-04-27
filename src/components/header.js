@@ -7,7 +7,7 @@ import * as ROUTES from "../constants/routes";
 export default function Header() {
   const { firebase } = useContext(FirebaseContext);
   const { user } = useContext(UserContext);
-  console.log("user", user);
+  // console.log("user in header", user);
   return (
     <header className="h-16 bg-white border-b border-gray-primary mb-8">
       <div className="container mx-auto max-w-screen-lg h-full">
@@ -71,7 +71,7 @@ export default function Header() {
                     <img
                       className="rounded-full h-8 w-8 flex"
                       src={`/images/avatars/${user.displayName}.jpg`}
-                      atl={`${user.displayName} profile`}
+                      alt={`${user.displayName} profile`}
                     />
                   </Link>
                 </div>
