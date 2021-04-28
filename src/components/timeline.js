@@ -14,6 +14,13 @@ export default function Timeline() {
 
   // console.log("photos", photos);
 
+  if (user && user.following && user.following.length === 0) {
+    return (
+      <div className="container col-span-2">
+        <div className="text-center text-lg">Follow people to see photos!</div>
+      </div>
+    );
+  }
   return (
     <div className="container col-span-2">
       {!photos ? (
@@ -21,9 +28,7 @@ export default function Timeline() {
       ) : photos.length ? (
         photos.map((content) => <Post key={content.docId} content={content} />)
       ) : (
-        <div className="text-center text-lg">
-          Follow people to see photos!
-        </div>
+        <div className="text-center text-lg">Follow people to see photos!</div>
       )}
     </div>
   );

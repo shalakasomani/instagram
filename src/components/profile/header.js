@@ -1,9 +1,9 @@
-import { useState, useEffect, useContext } from 'react';
-import PropTypes from 'prop-types';
-import Skeleton from 'react-loading-skeleton';
-import useUser from '../../hooks/use-user';
-import { isUserFollowingProfile, toggleFollow } from '../../services/firebase';
-import UserContext from '../../context/user';
+import { useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
+import Skeleton from "react-loading-skeleton";
+import useUser from "../../hooks/use-user";
+import { isUserFollowingProfile, toggleFollow } from "../../services/firebase";
+import UserContext from "../../context/user";
 
 export default function Header({
   photosCount,
@@ -15,8 +15,8 @@ export default function Header({
     fullName,
     followers,
     following,
-    username: profileUsername
-  }
+    username: profileUsername,
+  },
 }) {
   const { user: loggedInUser } = useContext(UserContext);
   const { user } = useUser(loggedInUser?.uid);
@@ -26,14 +26,23 @@ export default function Header({
   const handleToggleFollow = async () => {
     setIsFollowingProfile((isFollowingProfile) => !isFollowingProfile);
     setFollowerCount({
-      followerCount: isFollowingProfile ? followerCount - 1 : followerCount + 1
+      followerCount: isFollowingProfile ? followerCount - 1 : followerCount + 1,
     });
-    await toggleFollow(isFollowingProfile, user.docId, profileDocId, profileUserId, user.userId);
+    await toggleFollow(
+      isFollowingProfile,
+      user.docId,
+      profileDocId,
+      profileUserId,
+      user.userId
+    );
   };
 
   useEffect(() => {
     const isLoggedInUserFollowingProfile = async () => {
-      const isFollowing = await isUserFollowingProfile(user.username, profileUserId);
+      const isFollowing = await isUserFollowingProfile(
+        user.username,
+        profileUserId
+      );
       setIsFollowingProfile(!!isFollowing);
     };
 
@@ -51,13 +60,7 @@ export default function Header({
             alt={`${fullName} profile`}
             src={`/images/avatars/${profileUsername}.jpg`}
           />
-        ) : (
-          <img
-            className="rounded-full h-40 w-40 flex"
-            alt={"Karl Hadwen's profile"}
-            src="/images/avatars/karl.jpg"
-          />
-        )}
+        ) : null}
       </div>
       <div className="flex items-center justify-center flex-col col-span-2">
         <div className="container flex items-center">
@@ -68,12 +71,12 @@ export default function Header({
               type="button"
               onClick={handleToggleFollow}
               onKeyDown={(event) => {
-                if (event.key === 'Enter') {
+                if (event.key === "Enter") {
                   handleToggleFollow();
                 }
               }}
             >
-              {isFollowingProfile ? 'Unfollow' : 'Follow'}
+              {isFollowingProfile ? "Unfollow" : "Follow"}
             </button>
           )}
         </div>
@@ -97,7 +100,9 @@ export default function Header({
           )}
         </div>
         <div className="container mt-4">
-          <p className="font-medium">{!fullName ? <Skeleton count={1} height={24} /> : fullName}</p>
+          <p className="font-medium">
+            {!fullName ? <Skeleton count={1} height={24} /> : fullName}
+          </p>
         </div>
       </div>
     </div>
@@ -114,6 +119,6 @@ Header.propTypes = {
     fullName: PropTypes.string,
     username: PropTypes.string,
     followers: PropTypes.array,
-    following: PropTypes.array
-  }).isRequired
+    following: PropTypes.array,
+  }).isRequired,
 };
