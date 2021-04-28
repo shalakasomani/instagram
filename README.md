@@ -1,8 +1,22 @@
+# Instagram
+This application (Instagram clone) was built using React (Custom Hooks, Context), Firebase & Tailwind CSS. I have built the following pages within this application: login, sign up, dashboard/ timelin, sidebar & lastly the user profile page. There are four different pages, some are public and some are private with auth listeners. Firebase firestore handles all the data, and that data is retrieved using a custom hook.I used Tailwind CSS for this project.
+
+Tutorial here: https://youtu.be/AKeaaa8yAAk
+
+<img width="1039" alt="Screenshot 2021-04-28 at 2 06 39 PM" src="https://user-images.githubusercontent.com/9452651/116374033-90b87580-a82b-11eb-9553-d7f6c7df6e6f.png">
+
+<img width="1046" alt="Screenshot 2021-04-28 at 2 06 45 PM" src="https://user-images.githubusercontent.com/9452651/116374064-9615c000-a82b-11eb-9be4-abcb9092c219.png">
+
+<img width="819" alt="Screenshot 2021-04-28 at 2 08 27 PM" src="https://user-images.githubusercontent.com/9452651/116374078-9910b080-a82b-11eb-81cf-a5b98ec79124.png">
+
+<img width="893" alt="Screenshot 2021-04-28 at 2 08 04 PM" src="https://user-images.githubusercontent.com/9452651/116374070-9746ed00-a82b-11eb-8a29-ca9e0ff2574a.png">
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+
 
 In the project directory, you can run:
 
