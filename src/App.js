@@ -4,7 +4,7 @@ import * as ROUTES from "./constants/routes";
 import UserContext from "./context/user";
 import useAuthListener from "./hooks/use-auth-listener";
 import ProtectedRoute from "./helpers/protectedRoute";
-import IsUserLoggedIn from "./helpers/isUserLoggedIn";
+// import IsUserLoggedIn from "./helpers/isUserLoggedIn";
 
 //  use lazy loading to reduce bundle size so that document size is smaller and website is quicker
 const Login = lazy(() => import("./pages/login"));
@@ -21,7 +21,7 @@ export default function App() {
       <Router>
         <Suspense fallback={<p> Loading ...</p>}>
           <Switch>
-            <IsUserLoggedIn
+            {/* <IsUserLoggedIn
               user={user}
               loggedInPath={ROUTES.DASHBOARD}
               path={ROUTES.LOGIN}
@@ -34,7 +34,9 @@ export default function App() {
               path={ROUTES.SIGN_UP}
             >
               <Signup />
-            </IsUserLoggedIn>
+            </IsUserLoggedIn> */}
+            <Route path={ROUTES.LOGIN} component={Login} />
+            <Route path={ROUTES.SIGN_UP} component={Signup} />
             <Route path={ROUTES.PROFILE} component={Profile} />
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />

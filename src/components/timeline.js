@@ -12,8 +12,6 @@ export default function Timeline() {
   // if there are photos, render them : post component
   // if there are no photos, tell them to create photos
 
-  // console.log("photos", photos);
-
   if (user && user.following && user.following.length === 0) {
     return (
       <div className="container col-span-2">
@@ -25,11 +23,21 @@ export default function Timeline() {
     <div className="container col-span-2">
       {!photos ? (
         <Skeleton count={4} width={640} height={500} className="mb-5" />
-      ) : photos.length ? (
+      ) : photos?.length > 0 ? (
         photos.map((content) => <Post key={content.docId} content={content} />)
       ) : (
         <div className="text-center text-lg">Follow people to see photos!</div>
       )}
     </div>
   );
+
+  // return (
+  //   <div className="container col-span-2">
+  //     {!photos ? (
+  //       <Skeleton count={4} width={640} height={500} className="mb-5" />
+  //     ) : (
+  //       photos.map((content) => <Post key={content.docId} content={content} />)
+  //     )}
+  //   </div>
+  // );
 }
