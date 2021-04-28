@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import * as ROUTES from "./constants/routes";
 import UserContext from "./context/user";
 import useAuthListener from "./hooks/use-auth-listener";
-import ProtectedRoute from "./helpers/protected-route";
-import IsUserLoggedIn from "./helpers/is-user-logged-in";
+import ProtectedRoute from "./helpers/protectedRoute";
+import IsUserLoggedIn from "./helpers/isUserLoggedIn";
 
 //  use lazy loading to reduce bundle size so that document size is smaller and website is quicker
 const Login = lazy(() => import("./pages/login"));
 const Signup = lazy(() => import("./pages/signup"));
-const NotFound = lazy(() => import("./pages/not-found"));
+const NotFound = lazy(() => import("./pages/notfound"));
 const Dashboard = lazy(() => import("./pages/dashboard"));
 const Profile = lazy(() => import("./pages/profile"));
 
@@ -36,7 +36,7 @@ export default function App() {
               <Signup />
             </IsUserLoggedIn>
             <Route path={ROUTES.PROFILE} component={Profile} />
-            <ProtectedRoute user={user} path={ROUTES.DASHBOARD}>
+            <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
             </ProtectedRoute>
             <Route component={NotFound} />

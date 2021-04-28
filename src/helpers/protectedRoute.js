@@ -9,7 +9,8 @@ export default function ProtectedRoute({ user, children, ...rest }) {
       {...rest}
       render={({ location }) => {
         if (user) {
-          return React.cloneElement(children, { user });
+          return children;
+          // return React.cloneElement(children, { user });
         }
 
         if (!user) {

@@ -9,6 +9,7 @@ export default function IsUserLoggedIn({ user, loggedInPath, children, ...rest }
       render={({ location }) => {
         if (!user) {
           return children;
+          // return React.cloneElement(children);
         }
 
         if (user) {
