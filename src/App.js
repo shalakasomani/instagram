@@ -6,6 +6,7 @@ import useAuthListener from "./hooks/use-auth-listener";
 import ProtectedRoute from "./helpers/protected-route";
 import IsUserLoggedIn from "./helpers/is-user-logged-in";
 
+//  use lazy loading to reduce bundle size so that document size is smaller and website is quicker
 const Login = lazy(() => import("./pages/login"));
 const Signup = lazy(() => import("./pages/signup"));
 const NotFound = lazy(() => import("./pages/not-found"));
